@@ -10,16 +10,16 @@ pipeline{
       }
     }
   stages{
-    stage("pull"){
+    stage("test"){
      
       steps{
-        echo 'Pull fnished'
+        echo 'test fnished'
       }
     }  stages{
-    stage("pull"){
+    stage("deploy"){
      
       steps{
-        echo 'Pull fnished'
+        echo 'deploy fnished'
       }
     }
   }
