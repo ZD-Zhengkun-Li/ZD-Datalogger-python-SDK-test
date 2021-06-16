@@ -9,13 +9,13 @@ pipeline{
         echo 'Pull fnished'
       }
     }
-  stages{
+ 
     stage("test"){
      
       steps{
         echo 'test fnished'
       }
-    }  stages{
+    } 
     stage("deploy"){
      
       steps{
