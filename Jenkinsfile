@@ -7,6 +7,7 @@ pipeline{
      
       steps{
         echo 'Pull fnished'
+        echo '...'
       }
     }
  
