@@ -1,44 +1,26 @@
-CODE_CHANGE = getGitChanges()
+
 pipeline{
   agent any
-  enviorment{
-    NEW_VERSION = "1.0.3"
-    SERVER_CREDENTIALS = credentials('')
-  }
-  parameters{
-    string(name:'version',defaultValue:'',description:'version to deploy')
-    choice(name:'version',choices:['1.1.0','1.2.0'],description:'')
-    boolParam(name:'executeTests',defaultValue:true,description:'')
-  }
+
   stages{
     stage("pull"){
-      when{
-        expression{
-          BRANCH_NAME == "main" && CODE_CHANGE == true
-        }
-      }
+     
       steps{
         echo 'Pull fnished'
-        echo "version ${NEW_VERSION}"
       }
     }
-    stage("test"){
-      when{
-        expression{
-          params.executeTests == true
-        }
-      }
+  stages{
+    stage("pull"){
+     
       steps{
-        echo 'Test fnished'
+        echo 'Pull fnished'
       }
-    }
-    stage("deploy"){
+    }  stages{
+    stage("pull"){
+     
       steps{
-        echo 'deploy fnished'
-        echo "deployed version:${params.version}"
+        echo 'Pull fnished'
       }
     }
   }
-
-
 }
