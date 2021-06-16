@@ -5,6 +5,11 @@ pipeline{
     NEW_VERSION = "1.0.3"
     SERVER_CREDENTIALS = credentials('')
   }
+  parameters{
+    string(name:'version',defaultValue:'',description:'version to deploy')
+    choice(name:'version',choices:['1.1.0','1.2.0'],description:'')
+    boolParam(name:'executeTests',defaultValue:true,description:'')
+  }
   stages{
     stage("pull"){
       when{
@@ -13,23 +18,24 @@ pipeline{
         }
       }
       steps{
-        sh echo 'Pull fnished'
-        sh echo "version ${NEW_VERSION}"
+        echo 'Pull fnished'
+        echo "version ${NEW_VERSION}"
       }
     }
     stage("test"){
       when{
         expression{
-          BRANCH_NAME == "main"
+          params.executeTests == true
         }
       }
       steps{
-        sh "echo 'Test fnished'"
+        echo 'Test fnished'
       }
     }
     stage("deploy"){
       steps{
-        sh "echo 'deploy fnished'"
+        echo 'deploy fnished'
+        echo "deployed version:${params.version}"
       }
     }
   }
