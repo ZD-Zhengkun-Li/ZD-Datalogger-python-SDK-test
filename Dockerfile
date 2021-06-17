@@ -6,5 +6,7 @@ FROM ubuntu:18.04
 
 RUN apt update
 RUN apt-get update
-RUN apt-get -qq update
 RUN apt install python3.9
+RUN apt-get update && apt-get install -y \
+    python3-pip
+RUN apt-get update
